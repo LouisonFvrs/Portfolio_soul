@@ -51,22 +51,32 @@ Array.from(images).forEach(function(image, index) {
   image.addEventListener('dblclick', function() {
     if (index === 0) {
         var Div = document.querySelector('.about-me');
+        var footer = document.querySelector('.footer');
+        footer.classList.toggle('show');
         Div.classList.toggle('show');
     }
     if (index === 1) {
         var Div = document.querySelector('.project');
+        var footer = document.querySelector('.footer');
+        footer.classList.toggle('show');
         Div.classList.toggle('show');
     }
     if (index === 2) {
         var Div = document.querySelector('.skills');
+        var footer = document.querySelector('.footer');
+        footer.classList.toggle('show');
         Div.classList.toggle('show');
     }
     if (index === 3) {
         var Div = document.querySelector('.veille');
+        var footer = document.querySelector('.footer');
+        footer.classList.toggle('show');
         Div.classList.toggle('show');
     }
     if (index === 4) {
         var Div = document.querySelector('.contact');
+        var footer = document.querySelector('.footer');
+        footer.classList.toggle('show');
         Div.classList.toggle('show');
     }
     
@@ -75,3 +85,39 @@ Array.from(images).forEach(function(image, index) {
     document.body.appendChild(overlay);
   });
 });
+
+var reverseButton = document.querySelector('.reverse-animation-button');
+var page = document.documentElement;
+
+reverseButton.addEventListener('click', function() {
+  page.classList.add('animate-page-down');
+  var divs = document.querySelectorAll('.about-me, .project, .skills, .veille, .contact');
+  var footer = document.querySelector('.footer');
+  var overlay = document.querySelector('.animate-overlay');
+
+  for (var i = 0; i < divs.length; i++) {
+    divs[i].classList.remove('show');
+  }
+
+  if (overlay) {
+    overlay.parentNode.removeChild(overlay);
+  }
+
+  footer.classList.remove('show');
+});
+
+page.addEventListener('animationend', function() {
+  if (page.classList.contains('animate-page-down')) {
+    page.classList.remove('animate-page-down');
+  }
+});
+
+var animatedElement = document.querySelector('.animate-page-down');
+
+animatedElement.addEventListener('animationend', function() {
+  var overlay = document.querySelector('.animate-overlay');
+  if (overlay) {
+    overlay.parentNode.removeChild(overlay);
+  }
+});
+
