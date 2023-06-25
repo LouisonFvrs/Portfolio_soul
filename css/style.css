@@ -23,8 +23,8 @@ body {
 }
 
 #image-track .image {
-    width: 40vmin;
-    height: 60vmin;
+    width: 30vmin;
+    height: 50vmin;
     object-fit: cover;
     object-position: 100%;
 }
@@ -71,31 +71,136 @@ body {
     }
   }
 
-.about-me, .project, .skills, .veille, .contact{
+.about-me, .project, .skills, .veille, .contact, .footer{
     display: none;
-    position: relative;
+    position: absolute;
 }
 
 .about-me.show, .project.show, .skills.show, .veille.show, .contact.show {
-    display: block;
+    display: flex;
     z-index: 2;
     animation-duration: 0.5s;
     animation-name: slide-up;
 }
 
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
+.footer.show {
+    z-index: 2;
+    animation-duration: 0.5s;
+    animation-name: slide-up;
+    display: block;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: var(--text-color);
+    padding: 20px;
+    text-align: center;
+  }
+  
+
+h1 {
+    font-size: 36px;
+    color: var(--third-color);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.about-me { 
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    text-align: justify;
+    margin: 0 10%;
+}
+
+.about-me > img {
+    margin: 50px 0;
+}
+
+.project {
+     flex-direction: column;
+     margin: 0 10%;
+     text-align: justify;
+     flex-wrap: wrap;
+}
+
+.skills {
+    text-align: justify;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.skills > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 50px;
+    flex-direction: row;
+}
+
+.skills div > img {
+    margin-left: 50px;
+}
+
+.veille {
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    text-align: justify;
+    margin: 0 10%;
+}
+
+.veille img {
+    margin: 50px 0px;
+}
+
+.contact {
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    text-align: justify;
+    margin: 0 10%;
+}
+
+.contact img {
+    margin: 50px 0px;
+}
+
+.reverse-animation-button {
     background-color: var(--third-color);
     color: var(--text-color);
+    font-size: 16px;
+    padding: 10px 20px;
     border: none;
     border-radius: 4px;
-    font-size: 16px;
-    font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
   
-  .btn:hover {
+  .reverse-animation-button:hover {
     background-color: var(--four-color);
+  }
+
+
+  .animate-page-down {
+    animation-duration: 0.5s;
+    animation-name: slide-down;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes slide-down {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(100%);
+    }
   }
